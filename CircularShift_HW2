@@ -1,0 +1,69 @@
+//============================================================================
+// Name        : CircularShiftHW.cpp
+// Author      : Aslı Öztürk
+// Description : Circular Shift
+//============================================================================
+
+#include <iostream>
+using namespace std;
+
+void circularShift (int A[], int size, int shift)
+{
+	int temp;
+	if(shift > 0){
+		//left
+
+		while(shift > 0){
+				temp = A[size-1];
+				for(int i=size-1; i>=1; i--){
+					A[i] = A[i-1];
+				}
+				A[0] = temp;
+				shift--;
+			}
+	}
+	else{
+		//right
+		shift = -shift;
+		while(shift){
+			temp = A[0];
+			for(int i=0; i<=size-2;i++){
+				A[i] = A[i+1];
+			}
+			A[size-1] = temp;
+			shift--;
+		}
+	}
+
+
+
+}
+
+int main ()
+{
+	int *A, size, shift;
+
+	cout << "Please enter your array size: ";
+	cin >> size;
+
+	A = new int[size];
+
+	for(int k=0; k<size;k++){
+		cout << "Please enter your array's elements then press enter to keep adding: ";
+		cin >> A[k];
+	}
+
+	cout<< "Please specify your direction and shift count with positive for left or negative for right: ";
+	cin >> shift;
+
+	circularShift(A, size, shift);
+
+	for ( int i=0; i<size; i++)
+	{
+		cout << A[i] << " ";
+	}
+
+	return(0);
+
+}
+
