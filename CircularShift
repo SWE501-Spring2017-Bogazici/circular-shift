@@ -1,0 +1,46 @@
+//============================================================================
+// Name        : shiftcircular.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+using namespace std;
+
+int main() {
+		 int arr[4] = {1, 2, 3, 4};
+		 cout << arr[0] <<", " << arr[1] <<", " << arr[2] <<", " << arr[3] << endl;
+		 int a;
+	     cout << "Please enter the shift count to shift the array (positive/negative)" << endl;
+	     cin >> a;
+	return 0;
+}
+
+void circularshift(int* P, int shift) {
+	int *x;
+	if (shift >0)
+		for (int i=0; i<shift; i++) {
+			x=P;
+			for (int j=0; j<4; j++) {
+				swap(*x, *(x+1));
+				x++;
+			}
+		}
+}
+else {shift= -shift;
+for (int i=0; i<shift; i++) {
+	x=P+4;
+	for (int j=0; j<4; j++) {
+		swap(*x, *(x-1));
+		x--;
+}
+}
+}
+}
+void swap(int &a, int&b) {
+	int temp= a;
+	a= -b;
+	b= temp;
+}
